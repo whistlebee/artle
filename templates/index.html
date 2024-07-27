@@ -10,6 +10,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"
         rel="stylesheet">
+    <script src="https://unpkg.com/htmx.org@2.0.1"></script>
     <style>
         body {
             font-family: "EB Garamond", serif;
@@ -96,6 +97,14 @@
             font-weight: 600;
             margin: 0;
         }
+
+        .wrong-guess {
+            color: red;
+        }
+
+        .correct-guess {
+            color: green;
+        }
     </style>
 </head>
 
@@ -108,7 +117,8 @@
                 <p class="artwork-desc">{{ artist }} - {{ title }} | {{ yearCreation }}</p>
                 <p>{{ condition }}</p>
             </div>
-            <input type="text" id="number" name="price" placeholder="Price" />
+            <input type="text" id="number" name="price" placeholder="Price" hx-post="/artwork/guess/{{ id }}" hx-swap="innerHTML" hx-target="#guess-result"/>
+            <div id="guess-result"></div>
         </div>
         <div></div>
     </main>

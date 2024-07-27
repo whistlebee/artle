@@ -1,0 +1,20 @@
+<div>
+    <div>
+        Guessed price: ${{ guessed_price }} USD
+    </div>
+    <div>
+        {% if correct %}
+        <p class="correct-guess">Correct! Actual price is ${{ actual_price }} USD</p>
+        {% else %}
+        {% if difference < 0 %}
+        <p class="wrong-guess">
+            Too high!
+        </p>
+        {% else %}
+        <p class="wrong-guess">
+            Too low!
+        </p>
+        {% endif %}
+        {% endif %}
+    </div>
+</div>
